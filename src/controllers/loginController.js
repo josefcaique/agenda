@@ -1,7 +1,7 @@
 const Login = require('../models/loginModel')
 
 exports.index = (req, res) => {
-    console.log(req.session.user)
+    if (req.session.user) return res.render('index')
     res.render('login')
 }
 
