@@ -1,0 +1,40 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-3">
+            <h1 class="text-center">Contact</h1>
+            <p class="text-center lead">Create a new contact or edit an existing one</p>
+            
+            <%- include('includes/messages') %>
+
+            <form action="/contact/register" method="POST">
+                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                <div class="mb-3">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="mb-3">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" name="lastName">
+                </div>
+                <div class="mb-3">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email">
+                </div>
+                <div class="mb-3">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" name="phone">
+                </div>
+                <button type="submit" class="btn btn-primary">Register new contact</button>
+            </form>
+
+            
+
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+<%- include('includes/footer') %>
