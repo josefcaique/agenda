@@ -12,6 +12,12 @@ const ContactSchema = new mongoose.Schema({
 const ContactModel = mongoose.model('Contact', ContactSchema)
 
 class Contact{
+    
+    static async searchId(id){
+    if(typeof id !== 'string') return
+    return await ContactModel.findById(id)
+    }
+
     constructor(body){
         this.body = body
         this.errors = []
