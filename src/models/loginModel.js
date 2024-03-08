@@ -20,6 +20,7 @@ class Login{
         this.valid()
         if(this.errors.length > 0) return
         this.user =  await LoginModel.findOne({ email: this.body.email })
+        
         if(!this.user){
             this.errors.push('User not exist.')
             return

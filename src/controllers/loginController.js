@@ -1,6 +1,7 @@
 const Login = require('../models/loginModel')
 
 exports.index = (req, res) => {
+    console.log(req.session.user)
     res.render('login')
 }
 
@@ -29,6 +30,7 @@ exports.login = async function(req, res) {
     try{
         const login = new Login(req.body)
         await login.login()
+
         if(login.errors.length > 0){
             req.flash('errors', login.errors)
             req.session.save(function(){
@@ -48,7 +50,7 @@ exports.login = async function(req, res) {
     }
 }
 
-exports.logout = async function(req, res){
+exports.logout = function(req, res){
     req.session.destroy()
     res.redirect('/')
 }
