@@ -14,25 +14,22 @@
                 <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                 <div class="mb-3">
                     <label>Name</label>
-                    <input type="text" class="form-control" name="name">
+                    <input value= "<%=contact.name%>" type="text" class="form-control" name="name">
                 </div>
                 <div class="mb-3">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" name="lastName">
+                    <input value= "<%=contact.lastName%>" type="text" class="form-control" name="lastName">
                 </div>
                 <div class="mb-3">
                     <label>Email</label>
-                    <input type="email" class="form-control" name="email">
+                    <input value= "<%=contact.email%>" type="email" class="form-control" name="email">
                 </div>
                 <div class="mb-3">
                     <label>Phone Number</label>
-                    <input type="tel" class="form-control" name="phone">
+                    <input value= "<%=contact.phone%>" type="tel" class="form-control" name="phone">
                 </div>
                 <button type="submit" class="btn btn-primary">Register new contact</button>
             </form>
-
-            
-
         </div>
         <div class="col-lg-2"></div>
     </div>

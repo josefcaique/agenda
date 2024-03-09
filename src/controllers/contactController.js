@@ -1,7 +1,9 @@
 const Contact = require('../models/ContactModel')
 
 exports.index = (req, res) => {
-    res.render('contact')
+    res.render('contact', {
+        contact: {}
+    })
 }
 
 exports.register = async (req, res) => {
