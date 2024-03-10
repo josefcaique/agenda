@@ -13,11 +13,23 @@ const ContactModel = mongoose.model('Contact', ContactSchema)
 
 class Contact{
     
+    //Static Methods
     static async searchId(id){
-    if(typeof id !== 'string') return
-    return await ContactModel.findById(id)
+        if(typeof id !== 'string') return
+        return await ContactModel.findById(id)
     }
 
+    static async searchContact(){
+        return await ContactModel.find()
+        .sort({ createdIn: -1 })
+    }
+
+    static async deleteContact(id){
+        if(typeof id !== 'string') return
+        return await ContactModel.findOneAndDelete(id)
+    }
+
+    // constructor
     constructor(body){
         this.body = body
         this.errors = []
@@ -52,6 +64,13 @@ class Contact{
             email: this.body.email,
             phone: this.body.phone
         }
+    }
+
+    async edit(id){
+        if (typeof id !== 'string') return
+        this.valid()
+        if (this.errors.length > 0) return
+        this.contact = await ContactModel.findByIdAndUpdate(id, this.body, { new: true })
     }
 }
 

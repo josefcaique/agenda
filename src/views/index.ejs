@@ -10,35 +10,25 @@
         </div>
 
         <%- include('includes/messages') %>
-
+        <% if(contacts.length > 0) { %>
         <div class="responsive-table">
             <table class="table my-3">
-                <tr>
-                    <td>Josef</td>
-                    <td>Silva</td>
-                    <td>josef@email.com</td>
-                    <td>119111111111</td>
-                </tr>
-                <tr>
-                    <td>Josef</td>
-                    <td>Silva</td>
-                    <td>josef@email.com</td>
-                    <td>119111111111</td>
-                </tr>
-                <tr>
-                    <td>Josef</td>
-                    <td>Silva</td>
-                    <td>josef@email.com</td>
-                    <td>119111111111</td>
-                </tr>
-                <tr>
-                    <td>Josef</td>
-                    <td>Silva</td>
-                    <td>josef@email.com</td>
-                    <td>119111111111</td>
-                </tr>
+                <% contacts.forEach(contact => { %>
+                    <tr>
+                        <td><%=contact.name%></td>
+                        <td><%=contact.lastName%></td>
+                        <td><%=contact.email%></td>
+                        <td><%=contact.phone%></td>
+                        <td><a href="/contact/index/<%=contact._id%>">Edit</a></td>
+                        <td><a class="text-danger" href="/contact/delete/<%=contact._id%>">Delete</a></td>
+                    </tr>
+                <% }) %>
+                
             </table>
         </div>
+        <% } else { %>
+            <p class="text-center lead">No contacts to show</p>
+        <% } %>
 
         <div class="col-lg-2"></div>
     </div>
