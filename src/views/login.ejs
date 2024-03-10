@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-2"></div>
 
-        <div class="col-lg-8 my-3">
+        <div class="col-lg-8 my-5">
             <h1 class="text-center">Login or Sign Up</h1>
             <p class="text-center lead">Login or Sign up below </p>
 
@@ -14,7 +14,7 @@
                 <div class="col-lg">
                     <h4>Sign Up</h4>
                     <p>fill the fields to sign up</p>
-                    <form action="/login/register" method="POST">
+                    <form class="form-register" action="/login/register" method="POST">
                         <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                         <div class="mb-3">
                             <label>Email address</label>
@@ -33,7 +33,7 @@
                 <div class="col-lg">
                     <h4>Login</h4>
                     <p>Hello, welcome back</p>
-                    <form action="/login/login" method="POST">
+                    <form class="form-login" action="/login/login" method="POST">
                         <input type="hidden" name="_csrf" value="<%=csrfToken%>">
                         <div class="mb-3">
                             <label>Email address</label>

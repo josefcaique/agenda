@@ -9,13 +9,14 @@
             <p class="text-center lead">Create a new contact or edit an existing one</p>
             
             <%- include('includes/messages') %>
-
+            
             <% if(contact._id) { %>
             <form action="/contact/edit/<%= contact._id %>" method="POST">
             <% } else {%>
             <form action="/contact/register" method="POST">
             <%}%>
                 <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                <input type="hidden" name="user" value="<%=user._id%>">
                 <div class="mb-3">
                     <label>Name</label>
                     <input value= "<%=contact.name%>" type="text" class="form-control" name="name">

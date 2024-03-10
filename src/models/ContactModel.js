@@ -6,7 +6,8 @@ const ContactSchema = new mongoose.Schema({
     lastName: { type: String, required: false, default: ''},
     email: { type: String, required: false, default: ''},
     phone: { type: String, required: false, default: ''},
-    createdIn: { type: Date, default: Date.now }
+    createdIn: { type: Date, default: Date.now },
+    createdBy: {type: String, required:true}
 })
 
 const ContactModel = mongoose.model('Contact', ContactSchema)
@@ -19,14 +20,14 @@ class Contact{
         return await ContactModel.findById(id)
     }
 
-    static async searchContact(){
-        return await ContactModel.find()
+    static async searchContact(id){
+        return await ContactModel.find({createdBy: id})
         .sort({ createdIn: -1 })
     }
 
     static async deleteContact(id){
         if(typeof id !== 'string') return
-        return await ContactModel.findOneAndDelete(id)
+        return await ContactModel.findOneAndDelete({_id: id})
     }
 
     // constructor
@@ -62,7 +63,8 @@ class Contact{
             name: this.body.name,
             lastName: this.body.lastName,
             email: this.body.email,
-            phone: this.body.phone
+            phone: this.body.phone,
+            createdBy: this.body.user
         }
     }
 
