@@ -1,7 +1,7 @@
 const Contact = require('../models/ContactModel')
 
 exports.index = async (req, res) => {
-    const contacts = await Contact.searchContact()
-    console.log('this is the contacts:', contacts)
+    const id = req.session.user._id
+    const contacts = await Contact.searchContact(id)
     res.render('index', { contacts })
 }
